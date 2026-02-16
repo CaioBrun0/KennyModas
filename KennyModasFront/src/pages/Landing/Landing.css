@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.landingMain {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(255, 255, 255);
+    padding-top: 80px; 
+}
+
+.modelKenny {
+    width: 100%; 
+    height: 550px;
+    background-color: #fff1e6;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.modelKenny img {
+    height: 100%;
+    width: auto;      
+    max-width: 100%;  
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.content {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.content p {
+    margin-top: 30px;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-style: italic;
+    text-align: center;
+}
+
+/* --- ANIMAÇÃO DE ENTRADA (NOVO) --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px); /* Começa mais para baixo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);    /* Termina na posição original */
+    }
+}
+
+.gridProducts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px 0 50px 0; /* Ajustei o padding */
+    gap: 20px;
+    
+    /* Aplicação da Animação */
+    /* A animação dura 1.5s, começa devagar e termina suave (ease-out) e mantém o estado final (forwards) */
+    animation: fadeInUp 1.5s ease-out forwards; 
+    
+    /* Importante: Começa invisível para não piscar antes da animação */
+    opacity: 0; 
+    /* Delay de 0.5s para esperar o usuário começar a rolar ou carregar a página */
+    animation-delay: 0.3s; 
+}

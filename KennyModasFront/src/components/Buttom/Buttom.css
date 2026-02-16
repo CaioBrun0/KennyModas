@@ -1,0 +1,32 @@
+/* Botão "Fashion" Moderno */
+.btn-fashion {
+  background-color: transparent; /* Fundo transparente (esboçado) */
+  border: 1px solid #ffffff;     /* Borda fina e elegante (não use 2px, 1px é mais chique) */
+  color: #ffffff;                /* Texto escuro */
+  
+  /* Tipografia de Moda */
+  padding: 12px 35px;            /* Bastante espaço nas laterais */
+  text-transform: uppercase;     /* Caixa alta */
+  letter-spacing: 3px;           /* O segredo: letras bem espaçadas */
+  font-size: 11px;               /* Fonte pequena e discreta */
+  font-weight: 600;              /* Peso médio/negrito */
+  font-family: sans-serif;       /* Garante uma fonte limpa */
+  
+  cursor: pointer;
+  transition: all 0.4s ease;     /* Animação suave */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito Hover (Ao passar o mouse) */
+.btn-fashion:hover {
+  background-color: #1a1a1a;     /* Preenche de escuro */
+  color: #ffffff;                /* Texto fica branco */
+  padding-right: 45px;           /* Um leve movimento para a direita */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave */
+}
+
+/* Efeito Click (Ao clicar) */
+.btn-fashion:active {
+  transform: scale(0.98);        /* Diminui levemente */
+}

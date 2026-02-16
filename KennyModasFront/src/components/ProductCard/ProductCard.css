@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+
+.productCard {
+    /* Define um tamanho fixo para o card */
+    width: 300px;
+    height: 400px;
+    
+    /* Estilo visual */
+    position: relative; /* Necessário para posicionar o texto sobre a imagem */
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden; /* Garante que a imagem não saia para fora do card no zoom */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+/* Imagem */
+.productCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* A imagem preenche todo o quadrado sem esticar */
+    transition: transform 0.5s ease; /* Suaviza o zoom */
+}
+
+/* Efeito de zoom na imagem ao passar o mouse no card */
+.productCard:hover img {
+    transform: scale(1.05);
+}
+
+/* Container do texto sobreposto */
+.text-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    /* Gradiente sutil para garantir leitura do texto branco */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    color: white;
+    text-align: center;
+    transition: opacity 0.3s ease; /* Suaviza a mudança de opacidade */
+}
+
+/* Efeito de opacidade no texto ao passar o mouse no card */
+.productCard:hover .text-overlay {
+    opacity: 0.9;
+}
+
+/* Título principal */
+.text-overlay h1 {
+    font-family: 'Cinzel Decorative', serif; /* Fonte elegante e decorativa */
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin: 0 0 5px 0;
+    letter-spacing: 1px;
+}
+
+/* Subtítulo "Ver coleção" */
+.text-overlay p {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    opacity: 0.9;
+}

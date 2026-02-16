@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+/* --- ESTILOS DA BARRA FIXA --- */
+.navbar {
+  background-color: #fb9999;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  position: relative;
+}
+
+/* Logo */
+.navbar-logo {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: font-size 0.3s ease;
+}
+
+/* Botões da Direita */
+.nav-right {
+  display: flex;
+  list-style: none;
+  gap: 15px; /* Reduzi um pouco o gap para caber melhor no mobile */
+  align-items: center;
+}
+
+.nav-icon-link, .icon-btn {
+  color: #fff;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+}
+
+/* Hover Cinza */
+.nav-icon-link:hover, .icon-btn:hover {
+  color: #555555;
+  transform: scale(1.1);
+}
+
+.navbar-logo:hover{
+    color:#555555
+}
+
+/* --- MENU LATERAL (SIDEBAR) --- */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.sidebar-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar-menu {
+  position: fixed;
+  top: 0;
+  left: -300px; /* Começa escondido na esquerda */
+  width: 280px;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 1001;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+  transition: left 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-menu.open {
+  left: 0; /* Entra na tela */
+}
+
+.sidebar-header {
+  height: 80px;
+  background-color: #f8afaf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.sidebar-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: white;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 20px;
+}
+
+.sidebar-links li {
+  margin-bottom: 20px;
+}
+
+.sidebar-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: block;
+  transition: color 0.2s;
+}
+
+.sidebar-links a:hover {
+  color: #f8afaf;
+}
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 768px) {
+  /* Diminui a logo no celular para não bater nos ícones */
+  .navbar-logo {
+    font-size: 1.8rem;
+  }
+  
+  .navbar-container {
+    padding: 0 15px;
+  }
+
+  /* Ajusta gap dos ícones */
+  .nav-right {
+    gap: 10px;
+  }
+
+
+
+  /* Esconde itens específicos se necessário */
+  .desktop-only {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none;
+  }
+}
