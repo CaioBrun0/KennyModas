@@ -70,15 +70,14 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-    padding: 20px 0 50px 0; /* Ajustei o padding */
+    padding: 20px 0 50px 0;
     gap: 20px;
     
-    /* Aplicação da Animação */
-    /* A animação dura 1.5s, começa devagar e termina suave (ease-out) e mantém o estado final (forwards) */
-    animation: fadeInUp 1.5s ease-out forwards; 
+    /* Reduzimos de 1.5s para 0.8s */
+    animation: fadeInUp 0.8s ease-out forwards; 
     
-    /* Importante: Começa invisível para não piscar antes da animação */
+    /* Começa invisível */
     opacity: 0; 
-    /* Delay de 0.5s para esperar o usuário começar a rolar ou carregar a página */
-    animation-delay: 0.3s; 
+    /* Reduzimos o delay para quase zero, apenas para não piscar */
+    animation-delay: 0.1s; 
 }

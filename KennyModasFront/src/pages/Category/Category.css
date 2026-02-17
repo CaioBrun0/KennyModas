@@ -101,7 +101,9 @@
 }
 
 .fade-in-up {
-    animation: fadeInUp 0.8s ease-out forwards;
+    /* De 0.8s para 0.6s (mais ágil ainda) */
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0; /* Garante que comece invisível */
 }
 
 /* --- RESPONSIVIDADE --- */

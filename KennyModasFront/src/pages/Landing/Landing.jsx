@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'; // 1. Importe o useRef
+import { Link } from "react-router-dom";
 import "./Landing.css"
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Buttom from "../../components/Buttom/Buttom.jsx";
@@ -45,12 +46,24 @@ function Landing(){
             </h1>
 
             <div className="gridProducts">
-                <ProductCard img={blusa} produto="Blusas"/>
-                <ProductCard img={calca} produto="Calças"/>
-                <ProductCard img={cropped} produto="Croppeds"/>
-                <ProductCard img={saia} produto="Saias"/>
-                <ProductCard img={vestido} produto="Vestidos"/>
-                <ProductCard img={short} produto="Shorts"/>
+                <Link to="/categoria/blusas">
+                    <ProductCard img={blusa} produto="Blusas"/>
+                </Link>
+                <Link to="/categoria/calças">
+                    <ProductCard img={calca} produto="Calças"/>
+                </Link>
+                <Link to="/categoria/croppeds">
+                    <ProductCard img={cropped} produto="Croppeds"/>
+                </Link>
+                <Link to="/categoria/saias">
+                    <ProductCard img={saia} produto="Saias"/>
+                </Link>
+                <Link to="/categoria/vestidos">
+                    <ProductCard img={vestido} produto="Vestidos"/>
+                </Link>
+                <Link to="/categoria/shorts">
+                    <ProductCard img={short} produto="Shorts"/>
+                </Link>
             </div>
         </div>
     )
