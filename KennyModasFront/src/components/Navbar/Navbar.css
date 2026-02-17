@@ -1,83 +1,84 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-
-/* --- ESTILOS DA BARRA FIXA --- */
+/* --- CONTAINER PRINCIPAL --- */
 .navbar {
-  background-color: #fb9999;
-  height: 80px;
-  position: fixed;
+  position: fixed; /* Mudei de absolute para fixed */
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 20px 40px;
+  z-index: 1000;
+  
+  /* O EFEITO DE VIDRO (GLASSMORPHISM) */
+  background: rgba(255, 255, 255, 0.05); /* Quase transparente */
+  backdrop-filter: blur(10px); /* O desfoque atrás do menu */
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  transition: all 0.3s ease;
+}
+
+/* Escurece um pouco ao passar o mouse para leitura */
+.navbar:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
-  height: 100%;
-  position: relative;
 }
 
-/* Logo */
+/* --- LOGO (Centro) --- */
 .navbar-logo {
-  color: #fff;
-  text-decoration: none;
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.5rem;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  transition: font-size 0.3s ease;
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #2c2c2c;
+  letter-spacing: -0.5px;
+  text-transform: capitalize;
+  text-align: center;
 }
 
-/* Botões da Direita */
-.nav-right {
+/* --- LADO ESQUERDO E DIREITO --- */
+.nav-left, .nav-right {
+  flex: 1;
   display: flex;
-  list-style: none;
-  gap: 15px; /* Reduzi um pouco o gap para caber melhor no mobile */
   align-items: center;
 }
 
-.nav-icon-link, .icon-btn {
-  color: #fff;
-  transition: all 0.3s ease;
-  cursor: pointer;
+.nav-right {
+  justify-content: flex-end;
+  gap: 25px;
+  list-style: none;
+}
+
+/* --- ÍCONES E BOTÕES --- */
+.icon-btn, .nav-icon-link {
+  color: #2c2c2c;
+  transition: transform 0.2s, color 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
-  border: none;
 }
 
-/* Hover Cinza */
-.nav-icon-link:hover, .icon-btn:hover {
-  color: #555555;
+.icon-btn:hover, .nav-icon-link:hover {
+  color: #555;
   transform: scale(1.1);
 }
 
-.navbar-logo:hover{
-    color:#555555
-}
-
-/* --- MENU LATERAL (SIDEBAR) --- */
+/* --- SIDEBAR (Gaveta Lateral) --- */
 .sidebar-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.5);
-  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s;
+  transition: all 0.4s ease;
+  z-index: 1001;
 }
 
 .sidebar-overlay.open {
@@ -88,84 +89,65 @@
 .sidebar-menu {
   position: fixed;
   top: 0;
-  left: -300px; /* Começa escondido na esquerda */
-  width: 280px;
-  height: 100vh;
-  background-color: #fff;
-  z-index: 1001;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-  transition: left 0.3s ease-in-out;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1002;
   display: flex;
   flex-direction: column;
+  padding: 30px;
 }
 
 .sidebar-menu.open {
-  left: 0; /* Entra na tela */
+  transform: translateX(0);
 }
 
 .sidebar-header {
-  height: 80px;
-  background-color: #f8afaf;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--cor-borda);
+  padding-bottom: 15px;
 }
 
 .sidebar-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2rem;
-  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-style: italic;
 }
 
 .sidebar-links {
   list-style: none;
-  padding: 20px;
-}
-
-.sidebar-links li {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .sidebar-links a {
-  text-decoration: none;
-  color: #333;
-  font-size: 1.2rem;
-  font-weight: 500;
-  display: block;
-  transition: color 0.2s;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--cor-texto);
+  transition: color 0.3s, padding-left 0.3s;
 }
 
 .sidebar-links a:hover {
-  color: #f8afaf;
+  color: var(--cor-destaque);
+  padding-left: 10px;
 }
 
-/* --- RESPONSIVIDADE (MOBILE) --- */
-@media (max-width: 768px) {
-  /* Diminui a logo no celular para não bater nos ícones */
-  .navbar-logo {
-    font-size: 1.8rem;
-  }
-  
-  .navbar-container {
-    padding: 0 15px;
-  }
+/* --- RESPONSIVIDADE --- */
+.mobile-only { display: block; }
+.desktop-only { display: none; }
 
-  /* Ajusta gap dos ícones */
-  .nav-right {
-    gap: 10px;
-  }
-
-
-
-  /* Esconde itens específicos se necessário */
-  .desktop-only {
-    display: none;
-  }
-}
-
-@media (min-width: 769px) {
-  .mobile-only {
-    display: none;
-  }
+@media (min-width: 768px) {
+  .mobile-only { display: none; }
+  .desktop-only { display: block; }
+  .navbar { padding: 25px 60px; }
 }

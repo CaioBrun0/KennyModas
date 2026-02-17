@@ -1,5 +1,5 @@
-import React, { useRef } from 'react'; // 1. Importe o useRef
-import { Link } from "react-router-dom";
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import "./Landing.css"
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Buttom from "../../components/Buttom/Buttom.jsx";
@@ -13,43 +13,47 @@ import vestido from "../../assets/vestido.png"
 import short from "../../assets/short.png"
 
 function Landing(){
-    // 2. Criamos a referência para onde a tela deve deslizar
     const categoriasRef = useRef(null);
 
-    // 3. Função que executa o scroll suave
     const handleScrollToCategories = () => {
         categoriasRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return(
         <div className="landingMain">
+            
             <Navbar/>
 
             <div className="modelKenny">
                 <img src={kenniely} alt="Modelo Kenny Modas" />
                 
+                {/* O gradiente escuro agora é feito via CSS no ::after */}
+                
                 <div className="content">
                     <p>Descubra peças que definem seu estilo</p>
-                    {/* 4. Envolvemos o botão em uma div clicável para garantir que funcione */}
                     <div onClick={handleScrollToCategories} style={{ cursor: 'pointer' }}>
                         <Buttom name="Explorar"></Buttom>
                     </div>
                 </div>
             </div>
 
-            {/* 5. Adicionamos a 'ref' aqui no Título. Assim o scroll para exatamente aqui */}
+            {/* TÍTULO EDITORIAL (NOVIDADE) */}
+              <div className="top-bar" >
+                <p>FRETE GRÁTIS EM MIGUEL CALMON - BA</p>
+            </div>
+
             <h1 
                 ref={categoriasRef} 
-                style={{"marginTop":"40px", fontFamily:"'Playfair Display', serif", marginBottom: "20px"}}
+                className="section-title"
             >
-                Categorias
+                Coleções
             </h1>
 
             <div className="gridProducts">
                 <Link to="/categoria/blusas">
                     <ProductCard img={blusa} produto="Blusas"/>
                 </Link>
-                <Link to="/categoria/calças">
+                <Link to="/categoria/calcas">
                     <ProductCard img={calca} produto="Calças"/>
                 </Link>
                 <Link to="/categoria/croppeds">

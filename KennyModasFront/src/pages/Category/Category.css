@@ -7,68 +7,117 @@
     flex-direction: column;
 }
 
-/* --- HEADER EDITORIAL (Onde fica o título) --- */
+/* Reutilizando estilo da Top Bar (caso não esteja global) */
+.top-bar {
+    width: 100%;
+    background-color: #2c2c2c;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    z-index: 1002;
+    position: relative;
+}
+
+/* --- HEADER EDITORIAL --- */
 .category-header {
     width: 100%;
-    height: 350px; /* Altura elegante, não tela cheia */
-    background-color: #fff1e6; /* O mesmo creme da Landing Page */
+    /* Altura elegante, não tela cheia, mas com presença */
+    height: 400px; 
+    background-color: #fff1e6; /* Creme suave */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 60px; /* Espaço para a Navbar não cobrir o texto */
+    
+    /* Importante: Compensa a Navbar fixa */
+    margin-top: 0; 
+    position: relative;
 }
 
-.category-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    font-style: italic;
-    font-weight: 400;
-    color: #2c2c2c;
-    margin: 10px 0;
+.header-content {
+    max-width: 800px;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease-out forwards;
 }
 
 .breadcrumb {
     font-family: 'Lato', sans-serif;
     font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     color: #888;
-    margin-bottom: 10px;
+    display: block;
+    margin-bottom: 15px;
 }
 
-.category-subtitle {
+.category-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem; /* Título bem grande e fino */
+    font-style: italic;
+    font-weight: 400;
+    color: #2c2c2c;
+    margin: 0 0 20px 0;
+}
+
+.category-description {
     font-family: 'Lato', sans-serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #555;
-    max-width: 600px;
-    margin-top: 10px;
     font-weight: 300;
+    line-height: 1.6;
 }
 
 /* --- BARRA DE FILTROS --- */
-.filter-bar {
-    max-width: 1200px;
+.filter-container {
     width: 100%;
+    border-bottom: 1px solid #eee;
+    background-color: white;
+    position: sticky; /* Opcional: faz a barra colar no topo ao rolar */
+    top: 80px; /* Abaixo da navbar */
+    z-index: 900;
+}
+
+.filter-bar {
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 20px 40px;
+    padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #e5e5e5;
-    color: #666;
+    font-family: 'Lato', sans-serif;
     font-size: 0.9rem;
+    color: #2c2c2c;
 }
 
-.sort-options select {
+.product-count {
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Select customizado minimalista */
+.minimal-select {
     border: none;
     background: transparent;
     font-family: 'Lato', sans-serif;
-    color: #2c2c2c;
     font-weight: bold;
+    color: #2c2c2c;
     cursor: pointer;
-    margin-left: 5px;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
 }
 
 /* --- GRID DE PRODUTOS --- */
@@ -76,23 +125,36 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 60px 20px;
+    padding: 60px 20px 100px;
 }
 
 .products-grid {
     display: grid;
-    /* Grid Responsivo Inteligente: Cria colunas automáticas */
+    /* Grid responsivo moderno */
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
     gap: 40px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
+    
+    /* Animação rápida e fluida */
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
 }
 
-/* --- ANIMAÇÃO (Reutilizando a da Landing) --- */
+.no-products {
+    width: 100%;
+    text-align: center;
+    grid-column: 1 / -1; /* Ocupa todas as colunas */
+    padding: 80px 0;
+    color: #888;
+}
+
+/* --- ANIMAÇÃO (Global) --- */
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -100,26 +162,10 @@
     }
 }
 
-.fade-in-up {
-    /* De 0.8s para 0.6s (mais ágil ainda) */
-    animation: fadeInUp 0.6s ease-out forwards;
-    opacity: 0; /* Garante que comece invisível */
-}
-
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 768px) {
-    .category-header {
-        height: 250px;
-    }
-    .category-title {
-        font-size: 2.5rem;
-    }
-    .filter-bar {
-        padding: 15px 20px;
-        font-size: 0.8rem;
-    }
-    .products-grid {
-        gap: 20px;
-        justify-items: center; /* Centraliza os cards no mobile */
-    }
+    .category-header { height: 300px; }
+    .category-title { font-size: 2.8rem; }
+    .filter-bar { padding: 15px 20px; }
+    .products-grid { gap: 20px; justify-items: center; }
 }
