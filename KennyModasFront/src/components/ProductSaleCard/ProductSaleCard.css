@@ -1,0 +1,27 @@
+/* Preço Normal (Sem desconto) */
+.price-regular {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Container da Promoção */
+.price-promo {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* "De R$ 100" (Riscado e menor) */
+.old-price {
+    text-decoration: line-through;
+    opacity: 0.7;
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+
+/* "por R$ 80" (Destaque) */
+.new-price {
+    font-weight: bold;
+    color: #ffffff; /* Rosa destaque da sua marca */
+    font-size: 1.2rem;
+}

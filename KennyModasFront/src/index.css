@@ -1,23 +1,46 @@
-/* src/index.css */
+/* Importando as fontes: Playfair (Títulos/Logo) e Lato (Textos Gerais) */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Paleta de Cores "Kenny Modas" - Elegante e Suave */
+  --cor-fundo: #ffffff;       
+  --cor-fundo-destaque: #fff1e6; /* Creme suave */
+  --cor-destaque: #f8afaf;       /* Rosa Pastel */
+  --cor-texto: #2c2c2c;          /* Cinza Chumbo (Luxo) */
+  --cor-texto-claro: #666666;
+  --cor-borda: #e5e5e5;
 }
 
-/* OBRIGATÓRIO: Remove as margens padrão do navegador */
+/* Reset Básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
+  font-family: 'Lato', sans-serif;
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
   min-height: 100vh;
-  overflow-x: hidden; /* Evita barra de rolagem horizontal */
+  overflow-x: hidden; /* Evita rolagem lateral */
 }
 
-/* OBRIGATÓRIO: Garante que o React ocupe a tela toda */
-#root {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  /* Remova qualquer max-width ou text-align: center que tiver aqui */
+/* Títulos sempre com a fonte serifada chique */
+h1, h2, h3, .navbar-logo {
+  font-family: 'Playfair Display', serif;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

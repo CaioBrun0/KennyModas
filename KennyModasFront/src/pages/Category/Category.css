@@ -1,0 +1,123 @@
+/* --- ESTRUTURA GERAL --- */
+.category-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- HEADER EDITORIAL (Onde fica o título) --- */
+.category-header {
+    width: 100%;
+    height: 350px; /* Altura elegante, não tela cheia */
+    background-color: #fff1e6; /* O mesmo creme da Landing Page */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 60px; /* Espaço para a Navbar não cobrir o texto */
+}
+
+.category-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #2c2c2c;
+    margin: 10px 0;
+}
+
+.breadcrumb {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.category-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    color: #555;
+    max-width: 600px;
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+/* --- BARRA DE FILTROS --- */
+.filter-bar {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.sort-options select {
+    border: none;
+    background: transparent;
+    font-family: 'Lato', sans-serif;
+    color: #2c2c2c;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+/* --- GRID DE PRODUTOS --- */
+.category-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+}
+
+.products-grid {
+    display: grid;
+    /* Grid Responsivo Inteligente: Cria colunas automáticas */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* --- ANIMAÇÃO (Reutilizando a da Landing) --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .category-header {
+        height: 250px;
+    }
+    .category-title {
+        font-size: 2.5rem;
+    }
+    .filter-bar {
+        padding: 15px 20px;
+        font-size: 0.8rem;
+    }
+    .products-grid {
+        gap: 20px;
+        justify-items: center; /* Centraliza os cards no mobile */
+    }
+}
