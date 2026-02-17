@@ -135,6 +135,13 @@ ul li a:hover {
     border-radius: 4px;
 }
 
+/* Isso faz o ícone e o texto ficarem na mesma linha */
+.footer-section ul li a {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre o ícone e o texto */
+}
+
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 1024px) {
     .footer-content {
