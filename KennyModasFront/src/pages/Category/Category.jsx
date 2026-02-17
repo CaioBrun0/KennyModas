@@ -11,6 +11,7 @@ import blusa3 from "../../assets/blusa_feminina/blusa3.jpg";
 import blusa4 from "../../assets/blusa_feminina/blusa4.jpg";
 import blusa5 from "../../assets/blusa_feminina/blusa5.jpg";
 import blusa6 from "../../assets/blusa_feminina/blusa6.jpg";
+import Footer from '../../components/Footer/Footer.jsx';
 // ... outros imports
 
 function Category() {
@@ -84,7 +85,7 @@ function Category() {
                                 img={item.img} 
                                 categoria={titulo} 
                                 estacao={item.estacao} 
-                                preco={`R$ ${item.price}`}
+                                preco={`${item.price}`}
                             />
                         ))
                     ) : (
@@ -95,6 +96,7 @@ function Category() {
                     )}
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

@@ -11,6 +11,7 @@ import cropped from "../../assets/cropped.png"
 import saia from "../../assets/saia.png"
 import vestido from "../../assets/vestido.png"
 import short from "../../assets/short.png"
+import Footer from '../../components/Footer/Footer.jsx';
 
 function Landing(){
     const categoriasRef = useRef(null);
@@ -69,6 +70,8 @@ function Landing(){
                     <ProductCard img={short} produto="Shorts"/>
                 </Link>
             </div>
+
+            <Footer/>
         </div>
     )
 }
