@@ -16,8 +16,8 @@
   transition: all 0.4s ease;     /* Animação suave */
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
-
 /* Efeito Hover (Ao passar o mouse) */
 .btn-fashion:hover {
   background-color: #1a1a1a;     /* Preenche de escuro */
@@ -29,4 +29,14 @@
 /* Efeito Click (Ao clicar) */
 .btn-fashion:active {
   transform: scale(0.98);        /* Diminui levemente */
+}
+
+.btn-fashion.dark {
+    color: #2c2c2c; /* Cor escura do seu tema */
+    border-color: #2c2c2c;
+}
+
+.btn-fashion.dark:hover {
+    background-color: #2c2c2c;
+    color: white; /* Texto fica branco no hover */
 }

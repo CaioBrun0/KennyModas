@@ -53,12 +53,12 @@ function Footer() {
                 <div className="footer-section">
                     <h3>Categorias</h3>
                     <ul>
-                        <li><a href="#">Blusas</a></li>
-                        <li><a href="#">Calças</a></li>
-                        <li><a href="#">Vestidos</a></li>
-                        <li><a href="#">Shorts</a></li>
-                        <li><a href="#">Saias</a></li>
-                        <li><a href="#">Croppeds</a></li>
+                        <li><a href="/categoria/blusas">Blusas</a></li>
+                        <li><a href="/categoria/calcas">Calças</a></li>
+                        <li><a href="/categoria/vestidos">Vestidos</a></li>
+                        <li><a href="/categoria/shorts">Shorts</a></li>
+                        <li><a href="/categoria/saias">Saias</a></li>
+                        <li><a href="/categoria/croppeds">Croppeds</a></li>
                     </ul>
                 </div>
 

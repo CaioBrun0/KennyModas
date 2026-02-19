@@ -1,0 +1,164 @@
+.details-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding-top: 100px; /* Espaço para navbar fixa */
+}
+
+.details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dividir a tela em 2 */
+    gap: 60px;
+    align-items: start;
+}
+
+/* --- IMAGEM --- */
+.details-image {
+    width: 100%;
+    height: 600px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.details-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* --- INFORMAÇÕES --- */
+.details-info {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.breadcrumb-detail {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+}
+
+.product-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: #2c2c2c;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.product-price {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.8rem;
+    color: #2c2c2c;
+    font-weight: 300;
+}
+
+.product-description {
+    font-family: 'Lato', sans-serif;
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
+    max-width: 90%;
+}
+
+/* --- SELETORES (Tamanho e Cor) --- */
+.selector-group {
+    margin-top: 10px;
+}
+
+.selector-label {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: #2c2c2c;
+    font-weight: bold;
+}
+
+/* Grid de Tamanhos */
+.sizes-grid {
+    display: flex;
+    gap: 10px;
+}
+
+.size-btn {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #e5e5e5;
+    background: transparent;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    color: #2c2c2c;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.size-btn:hover {
+    border-color: #2c2c2c;
+}
+
+.size-btn.selected {
+    background-color: #2c2c2c;
+    color: white;
+    border-color: #2c2c2c;
+}
+
+/* Grid de Cores */
+.colors-grid {
+    display: flex;
+    gap: 15px;
+}
+
+.color-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%; /* Bolinha */
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+}
+
+/* Anel de seleção em volta da cor */
+.color-btn.selected::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border: 1px solid #2c2c2c;
+    border-radius: 50%;
+}
+
+.action-area {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+    .details-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .details-image {
+        height: 400px;
+    }
+    
+    .product-title {
+        font-size: 2rem;
+    }
+}

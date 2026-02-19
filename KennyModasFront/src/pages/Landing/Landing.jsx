@@ -11,6 +11,7 @@ import cropped from "../../assets/cropped.png"
 import saia from "../../assets/saia.png"
 import vestido from "../../assets/vestido.png"
 import short from "../../assets/short.png"
+import tudo from "../../assets/tudo.png"
 import Footer from '../../components/Footer/Footer.jsx';
 
 function Landing(){
@@ -27,18 +28,15 @@ function Landing(){
 
             <div className="modelKenny">
                 <img src={kenniely} alt="Modelo Kenny Modas" />
-                
-                {/* O gradiente escuro agora é feito via CSS no ::after */}
-                
+                                
                 <div className="content">
-                    <p>Descubra peças que definem seu estilo</p>
+                    <p>Te vestindo para o sucesso</p>
                     <div onClick={handleScrollToCategories} style={{ cursor: 'pointer' }}>
                         <Buttom name="Explorar"></Buttom>
                     </div>
                 </div>
             </div>
 
-            {/* TÍTULO EDITORIAL (NOVIDADE) */}
               <div className="top-bar" >
                 <p>FRETE GRÁTIS EM MIGUEL CALMON - BA</p>
             </div>
@@ -51,6 +49,9 @@ function Landing(){
             </h1>
 
             <div className="gridProducts">
+                <Link to="/categoria/tudo">
+                    <ProductCard img={tudo} produto="Tudo"/>
+                </Link>
                 <Link to="/categoria/blusas">
                     <ProductCard img={blusa} produto="Blusas"/>
                 </Link>
@@ -69,6 +70,7 @@ function Landing(){
                 <Link to="/categoria/shorts">
                     <ProductCard img={short} produto="Shorts"/>
                 </Link>
+                
             </div>
 
             <Footer/>

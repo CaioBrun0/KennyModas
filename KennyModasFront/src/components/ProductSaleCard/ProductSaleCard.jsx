@@ -1,20 +1,19 @@
+import { Link } from 'react-router-dom';
 import "./ProductSaleCard.css";
 
-function ProductSaleCard({ img, categoria, estacao, preco, desconto }) { 
-    return(
+// Agora recebemos o objeto 'dados' completo
+function ProductSaleCard({ dados }) {
+    return (
         <div className="productCard">
-            <img src={img} alt={`${categoria} - ${estacao}`} />
+            {/* O Link envolve a imagem para torná-la clicável */}
+            {/* Passamos o objeto 'dados' inteiro via 'state' para a próxima tela */}
+            <Link to={`/produto/${dados.id}`} state={{ product: dados }}>
+                <img src={dados.img} alt={dados.categoria} />
+            </Link>
+
             <div className="text-overlay">
-                {/* LÓGICA DE PREÇO: */}
-                {desconto ? (
-                    <p className="price-promo">
-                        <span className="old-price">De R$ {preco}</span>
-                        <span className="new-price"> <br/> por R$ {desconto}</span>
-                    </p>
-                ) : (
-                    <p className="price-regular">R$ {preco}</p>
-                )}
-                
+                {/* <h1>{dados.nome || dados.categoria}</h1> */}
+                <p>R$ {dados.price}</p>
             </div>
         </div>
     )

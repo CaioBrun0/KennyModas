@@ -16,29 +16,91 @@ import Footer from '../../components/Footer/Footer.jsx';
 
 function Category() {
     const { nome } = useParams(); 
+
+    const isTudo = nome === "tudo";
     
-    const titulo = nome ? nome.charAt(0).toUpperCase() + nome.slice(1) : "Coleção";
+    const titulo = isTudo 
+        ? "Tudo" 
+        : (nome ? nome.charAt(0).toUpperCase() + nome.slice(1) : "Coleção");
     
     // 1. BANCO DE DADOS SIMULADO
     const allProducts = [
-        // --- BLUSAS ---
-        { id: 1, img: blusa1, price: "129,90", categoria: "Blusas", estacao: "Verão" },
-        { id: 2, img: blusa2, price: "199,90", categoria: "Blusas", estacao: "Primavera" },
-        { id: 3, img: blusa3, price: "89,90",  categoria: "Blusas", estacao: "Outono" },
-        { id: 4, img: blusa4, price: "149,90", categoria: "Blusas", estacao: "Inverno" },   
-        { id: 5, img: blusa5, price: "179,90", categoria: "Blusas", estacao: "Festa" },
-        { id: 6, img: blusa6, price: "99,90",  categoria: "Blusas", estacao: "Casual" },
-        // --- CALÇAS ---
-        { id: 4, img: blusa1, price: "299,90", categoria: "Calças", estacao: "Inverno" },
-        { id: 5, img: blusa1, price: "159,90", categoria: "Calças", estacao: "Verão" },
-        // --- VESTIDOS ---
-        { id: 6, img: blusa1, price: "459,90", categoria: "Vestidos", estacao: "Festa" },
+        { 
+            id: 1, 
+            img: blusa1, 
+            price: "129,90", 
+            categoria: "Blusas", 
+            estacao: "Verão",
+            // NOVOS DADOS:
+            nome: "Blusa de Seda Off-White",
+            descricao: "Uma peça delicada e versátil, perfeita para compor looks de trabalho ou casuais com um toque de sofisticação.",
+            tamanhos: ["P", "M", "G", "GG"],
+            cores: ["#fdfbf7", "#2c2c2c", "#d4a5a5"] // Hex codes para as cores (Creme, Preto, Rosa)
+        },
+        { 
+            id: 2, 
+            img: blusa2, 
+            price: "199,90", 
+            categoria: "Blusas", 
+            estacao: "Primavera",
+            nome: "Blusa de Linho Bege",
+            descricao: "Uma peça leve e confortável, ideal para dias ensolarados. Com detalhes sutis que elevam o look.",
+            tamanhos: ["P", "M", "G"],
+            cores: ["#e0c8a2", "#f5f5f5"] // Hex codes para as cores (Bege, Branco)
+        },
+        { 
+            id: 3, 
+            img: blusa3, 
+            price: "89,90", 
+            categoria: "Blusas", 
+            estacao: "Outono",
+            nome: "Blusa de Seda Rosa",
+            descricao: "Uma peça elegante e sofisticada, ideal para compor looks de dia e noite com um toque de feminilidade.",
+            tamanhos: ["P", "M", "G"],
+            cores: ["#f5c0c0", "#f8f8f8"] // Hex codes para as cores (Rosa, Branco)
+        },
+        {
+            id: 4,
+            img: blusa4,
+            price: "149,90",
+            categoria: "Blusas",
+            estacao: "Inverno",
+            nome: "Blusa de Seda Azul",
+            descricao: "Uma peça elegante e sofisticada, ideal para compor looks de dia e noite com um toque de feminilidade.",
+            tamanhos: ["P", "M", "G"],
+            cores: ["#a0c0e0", "#f8f8f8"] // Hex codes para as cores (Azul, Branco)
+        },
+        {
+            id: 5,
+            img: blusa5,
+            price: "179,90",
+            categoria: "Blusas",
+            estacao: "Festa",
+            nome: "Blusa de Seda Rosa Escuro",
+            descricao: "Uma peça elegante e sofisticada, ideal para compor looks de dia e noite com um toque de feminilidade.",
+            tamanhos: ["P", "M", "G"],
+            cores: ["#c08080", "#f8f8f8"] // Hex codes para as cores (Rosa Escuro, Branco)
+        },
+        {
+            id: 6,
+            img: blusa6,
+            price: "99,90",
+            categoria: "Blusas",
+            estacao: "Casual",
+            nome: "Blusa de Seda Branca",
+            descricao: "Uma peça leve e confortável, ideal para dias ensolarados. Com detalhes sutis que elevam o look.",
+            tamanhos: ["P", "M", "G"],
+            cores: ["#ffffff", "#f5f5f5"] // Hex codes para as cores (Branco, Branco)
+        },
     ];
 
     // 2. FILTRO
-    const filteredProducts = allProducts.filter((produto) => {
-        return produto.categoria.toLowerCase() === nome?.toLowerCase();
-    });
+    const filteredProducts = isTudo 
+        ? allProducts // <--- SE FOR "TUDO", RETORNA A LISTA INTEIRA
+        : allProducts.filter((produto) => {
+            // SE NÃO, FILTRA NORMALMENTE
+            return produto.categoria.toLowerCase() === nome?.toLowerCase();
+        });
 
     return (
         <div className="category-page">
@@ -82,10 +144,7 @@ function Category() {
                         filteredProducts.map((item) => (
                             <ProductSaleCard 
                                 key={item.id} 
-                                img={item.img} 
-                                categoria={titulo} 
-                                estacao={item.estacao} 
-                                preco={`${item.price}`}
+                                dados={item}
                             />
                         ))
                     ) : (

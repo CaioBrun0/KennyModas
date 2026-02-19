@@ -60,7 +60,7 @@ function Navbar() {
 
         <ul className="sidebar-links">
           <li><Link to="/" onClick={closeMenu}>Home</Link></li>
-          <li><Link to="/produtos" onClick={closeMenu}>Produtos</Link></li>
+          <li><Link to="/categoria/tudo" onClick={closeMenu}>Produtos</Link></li>
           <li><Link to="/lancamentos" onClick={closeMenu}>Lançamentos</Link></li>
           <li><Link to="/sobre" onClick={closeMenu}>Sobre Nós</Link></li>
           {/* Link extra para perfil no mobile */}

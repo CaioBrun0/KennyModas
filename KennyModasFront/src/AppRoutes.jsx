@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
 import Category from "./pages/Category/Category";
+import ProductDetails from "./pages/ProductDetails/ProductDetails.jsx";
 
 function AppRoutes() {
     return (
@@ -9,8 +10,8 @@ function AppRoutes() {
             <Routes>
                 {/* Rota da Página Inicial */}
                 <Route path="/" element={<Landing />} />
-                {/* Rota Dinâmica para Categorias (ex: /categoria/blusas) */}
                 <Route path="/categoria/:nome" element={<Category />} />
+                <Route path="/produto/:id" element={<ProductDetails />} />
             </Routes>
         </BrowserRouter>
     );
