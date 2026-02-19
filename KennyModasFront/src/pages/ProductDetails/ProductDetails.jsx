@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from "../../components/Navbar/Navbar";
 import Buttom from "../../components/Buttom/Buttom"; // Reutilizando seu botão
 import Footer from "../../components/Footer/Footer"; // Se tiver criado
+import { useCart } from '../../Context/CartContext';
 import "./ProductDetails.css";
 
 function ProductDetails() {
@@ -10,9 +11,23 @@ function ProductDetails() {
     const navigate = useNavigate();
     const product = state?.product;
 
+    const { addToCart } = useCart(); // 2. PEGA A FUNÇÃO
+
     // Estados para seleção
     const [tamanhoSelecionado, setTamanhoSelecionado] = useState(null);
     const [corSelecionada, setCorSelecionada] = useState(null);
+    const [erro, setErro] = useState(""); // Pra avisar o usuário se esquecer de marcar
+
+    // 3. FUNÇÃO DO CLIQUE
+    const handleAddToCart = () => {
+        if (!tamanhoSelecionado || !corSelecionada) {
+            setErro("Por favor, selecione um tamanho e uma cor.");
+            return;
+        }
+        setErro("");
+        // Envia o produto, o tamanho e a cor
+        addToCart(product, tamanhoSelecionado, corSelecionada);
+    };
 
     // Se tentar acessar a rota direto sem clicar no card, volta pra home
     if (!product) {
@@ -78,10 +93,10 @@ function ProductDetails() {
                             ))}
                         </div>
                     </div>
+                    
+                    {erro && <p style={{color: 'red', fontSize: '0.9rem', marginTop: '10px'}}>{erro}</p>}
 
-                    {/* BOTÃO DE AÇÃO */}
-                    <div className="action-area">
-                        {/* AQUI ESTÁ A MUDANÇA: Adicione variant="dark" */}
+                    <div className="action-area" onClick={handleAddToCart}>
                         <Buttom name="Adicionar à Sacola" variant="dark" />
                     </div>
                 </div>

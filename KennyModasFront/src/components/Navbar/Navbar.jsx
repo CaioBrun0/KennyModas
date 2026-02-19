@@ -1,12 +1,16 @@
-import { useState } from 'react'; // 1. Importe o useState
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, ShoppingCart, User, Menu, X } from 'lucide-react'; // Adicionei o X para fechar
+import { Heart, ShoppingCart, User, Menu, X } from 'lucide-react';
+import { useCart } from '../../Context/CartContext'; // 1. Importando o contexto do carrinho
+import CartSidebar from '../CartSidebar/CartSidebar'; // 2. Importando o componente do carrinho
 import './Navbar.css';
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // 2. Estado do menu
+  const [isOpen, setIsOpen] = useState(false);
+  
+  // 3. Pegando as funções e dados do carrinho
+  const { toggleCart, totalItemsCount } = useCart(); 
 
-  // Função para fechar o menu ao clicar em um link
   const closeMenu = () => setIsOpen(false);
 
   return (
@@ -17,7 +21,7 @@ function Navbar() {
           {/* LADO ESQUERDO: Botão que abre o menu */}
           <div className="nav-left">
              <button className="icon-btn" onClick={() => setIsOpen(true)}>
-               <Menu size={28} /> {/* Removi a cor fixa para o CSS controlar */}
+               <Menu size={28} />
              </button>
           </div>
 
@@ -33,12 +37,24 @@ function Navbar() {
                 <Heart size={24} />
               </Link>
             </li>
+            
+            {/* ÍCONE DO CARRINHO ATUALIZADO */}
             <li className="nav-item">
-              <Link to="/carrinho" className="nav-icon-link">
+              <button 
+                className="icon-btn nav-icon-link" 
+                onClick={toggleCart} 
+                style={{ position: 'relative', background: 'transparent', border: 'none' }}
+              >
                 <ShoppingCart size={24} />
-              </Link>
+                
+                {/* BOLINHA VERMELHA (Só aparece se tiver algo no carrinho) */}
+                {totalItemsCount > 0 && (
+                  <span className="cart-badge">{totalItemsCount}</span>
+                )}
+              </button>
             </li>
-            <li className="nav-item desktop-only"> {/* Ocultar perfil no mobile se faltar espaço */}
+
+            <li className="nav-item desktop-only">
               <Link to="/perfil" className="nav-icon-link">
                 <User size={24} />
               </Link>
@@ -47,7 +63,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* 3. A GAVETA LATERAL (SIDEBAR) */}
+      {/* A GAVETA LATERAL (SIDEBAR DE NAVEGAÇÃO) */}
       <div className={`sidebar-overlay ${isOpen ? 'open' : ''}`} onClick={closeMenu}></div>
       
       <div className={`sidebar-menu ${isOpen ? 'open' : ''}`}>
@@ -63,10 +79,12 @@ function Navbar() {
           <li><Link to="/categoria/tudo" onClick={closeMenu}>Produtos</Link></li>
           <li><Link to="/lancamentos" onClick={closeMenu}>Lançamentos</Link></li>
           <li><Link to="/sobre" onClick={closeMenu}>Sobre Nós</Link></li>
-          {/* Link extra para perfil no mobile */}
           <li className="mobile-only"><Link to="/perfil" onClick={closeMenu}>Minha Conta</Link></li>
         </ul>
       </div>
+
+      {/* RENDERIZANDO A GAVETA DO CARRINHO */}
+      <CartSidebar />
     </>
   );
 }
